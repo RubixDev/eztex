@@ -16,3 +16,4 @@ fi
 if [[ ! -e /usr/local/bin/eztex ]]; then
     ln -s /opt/eztex/eztex.sh /usr/local/bin/eztex
 fi
+echo -e "\x1b[32mSuccessfully installed \x1b[1meztex\x1b[22m to your system\x1b[0m"
