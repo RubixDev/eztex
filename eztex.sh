@@ -220,7 +220,7 @@ new () {
 }
 
 help () {
-    echo "Usage: $0 COMMAND ...ARGS"
+    echo "Usage: $EXECUTABLE_NAME COMMAND ...ARGS"
     echo
     echo "COMMANDS:"
     printf "    %-15s%-20s%s\n" "i | init"  "TEMPLATE"       "Initializes a new LaTeX project based on TEMPLATE in the current directory"
