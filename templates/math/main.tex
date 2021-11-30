@@ -1,0 +1,42 @@
+\documentclass[ngerman, 12pt]{article}
+
+\usepackage[a4paper, margin=2cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{babel}
+\usepackage[autostyle]{csquotes}
+\usepackage{xcolor}
+\usepackage[pdfborder={0 0 0}]{hyperref}
+\usepackage[all]{hypcap}
+
+\usepackage[no-math]{fontspec}
+\setmainfont{DejaVu Sans}
+\setmonofont{JetBrains Mono}
+
+\usepackage{tabularx}
+\renewcommand{\arraystretch}{1.5}
+\newcolumntype{L}{X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{\small Toller Name}
+\chead{\small Tolles Thema}
+\rhead{\small \today}
+\setlength{\headheight}{14pt}
+\addtolength{\topmargin}{-2pt}
+
+\renewcommand{\labelitemii}{$\circ$}
+\renewcommand{\labelitemiii}{$\vcenter{\hbox{\rule{.5ex}{.5ex}}}$}
+\renewcommand{\labelitemiv}{$\vcenter{\hbox{\rule{.5ex}{.5ex}}}$}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{8pt}
+
+\include{preamble/pgfplots.tex}
+\include{preamble/siunitx.tex}
+
+\begin{document}
+    \input{content.tex}
+\end{document}
