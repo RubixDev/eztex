@@ -195,6 +195,12 @@ init () {
     GLOBIGNORE=".:.."
     cp -r "$TEMPLATES_DIR/$template"/.* ./
     echo_done
+
+    if [[ -n "$name_flag" ]]; then
+        echo -e "\x1b[36mReplacing name placeholder with $(bold "$name_flag")...\x1b[0m"
+        sed -i "s/Name Placeholder/$name_flag/" main.tex
+        echo_done
+    fi
 }
 
 new () {
@@ -227,7 +233,15 @@ save () {
 }
 
 help () {
-    echo "Usage: $EXECUTABLE_NAME COMMAND ...ARGS"
+    echo "$EXECUTABLE_NAME"
+    echo "RubixDev"
+    echo "A CLI tool for quickly starting new LaTeX projects"
+    echo
+    echo "USAGE:"
+    echo "    $EXECUTABLE_NAME [OPTIONS] COMMAND ...ARGS"
+    echo
+    echo "OPTIONS:"
+    printf "    %-15s%-20s%s\n" "-n | --name" "NAME" "A name used to directly replace the name placeholder on initialization of a project"
     echo
     echo "COMMANDS:"
     printf "    %-15s%-20s%s\n" "i | init"  "TEMPLATE"       "Initializes a new LaTeX project based on TEMPLATE in the current directory"
@@ -239,11 +253,20 @@ help () {
 
 ####################################
 
-case "$1" in
-    i | init  ) init "$2" current || exit "$?" ;;
+other_args=()
+name_flag=""
+while [ $# -gt 0 ]; do
+    case "$1" in
+        -n | --name ) name_flag="$2"; shift 2 ;;
+        * ) other_args+=("$1"); shift ;;
+    esac
+done
+
+case "${other_args[0]}" in
+    i | init  ) init "${other_args[1]}" current || exit "$?" ;;
     c | clear ) clear ;;
-    n | new   ) new "$2" "$3" ;;
+    n | new   ) new "${other_args[1]}" "${other_args[2]}" ;;
     s | save  ) save ;;
     h | help  ) help ;;
-    * ) echo -e "\x1b[31mUnknown command '$(bold "$1")'\x1b[0m"; help ;;
+    * ) echo -e "\x1b[31mUnknown command '$(bold "${other_args[0]}")'\x1b[0m"; help ;;
 esac
