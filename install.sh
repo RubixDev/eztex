@@ -8,9 +8,15 @@ fi
 if [[ -d /opt/eztex ]]; then
     echo -e "\x1b[1;33meztex\x1b[22m seems to already be installed on your system. Trying to update instead...\x1b[0m"
     cd /opt/eztex || exit 2
-    git pull
+    git pull || {
+        echo -e "\x1b[31mUpdating of \x1b[1meztex\x1b[22m failed. See above for error\x1b[0m"
+        exit 3
+    }
 else
-    git clone 'https://github.com/RubixDev/eztex.git' /opt/eztex
+    git clone 'https://github.com/RubixDev/eztex.git' /opt/eztex || {
+        echo -e "\x1b[31mInstallation of \x1b[1meztex\x1b[22m failed. See above for error\x1b[0m"
+        exit 3
+    }
 fi
 
 if [[ ! -e /usr/local/bin/eztex ]]; then
