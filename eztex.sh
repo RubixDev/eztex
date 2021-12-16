@@ -219,6 +219,10 @@ new () {
     echo_done
 }
 
+save () {
+    cp main.pdf "$(basename "$(pwd)")".pdf
+}
+
 help () {
     echo "Usage: $EXECUTABLE_NAME COMMAND ...ARGS"
     echo
@@ -226,6 +230,7 @@ help () {
     printf "    %-15s%-20s%s\n" "i | init"  "TEMPLATE"       "Initializes a new LaTeX project based on TEMPLATE in the current directory"
     printf "    %-15s%-20s%s\n" "c | clear" ""               "Clears the current LaTeX project of cache files"
     printf "    %-15s%-20s%s\n" "n | new"   "TEMPLATE  NAME" "Creates a new LaTeX project in a new directory called NAME based on TEMPLATE"
+    printf "    %-15s%-20s%s\n" "s | save"  ""               "Copies the main.pdf to a PDF with the name of the current directory"
     printf "    %-15s%-20s%s\n" "h | help"  ""               "Shows this message"
 }
 
@@ -235,6 +240,7 @@ case "$1" in
     i | init  ) init "$2" || exit "$?" ;;
     c | clear ) clear ;;
     n | new   ) new "$2" "$3" ;;
+    s | save  ) save ;;
     h | help  ) help ;;
     * ) echo -e "\x1b[31mUnknown command '$(bold "$1")'\x1b[0m"; help ;;
 esac
