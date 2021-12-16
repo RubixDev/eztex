@@ -196,9 +196,14 @@ init () {
     cp -r "$TEMPLATES_DIR/$template"/.* ./
     echo_done
 
-    if [[ -n "$name_flag" ]]; then
-        echo -e "\x1b[36mReplacing name placeholder with $(bold "$name_flag")...\x1b[0m"
-        sed -i "s/Name Placeholder/$name_flag/" main.tex
+    if [[ -n "$option_name" ]]; then
+        echo -e "\x1b[36mReplacing name placeholder with $(bold "$option_name")...\x1b[0m"
+        sed -i "s/Name Placeholder/$option_name/" main.tex
+        echo_done
+    fi
+    if [[ -n "$option_date" ]]; then
+        echo -e "\x1b[36mReplacing \\\\today with $(bold "$option_date")...\x1b[0m"
+        sed -i "s/\\\\today/$option_date/" main.tex
         echo_done
     fi
 }
@@ -242,6 +247,7 @@ help () {
     echo
     echo "OPTIONS:"
     printf "    %-15s%-20s%s\n" "-n | --name" "NAME" "A name used to directly replace the name placeholder on initialization of a project"
+    printf "    %-15s%-20s%s\n" "-d | --date" "DATE" "A date to use instead of \\today"
     echo
     echo "COMMANDS:"
     printf "    %-15s%-20s%s\n" "i | init"  "TEMPLATE"       "Initializes a new LaTeX project based on TEMPLATE in the current directory"
@@ -254,10 +260,12 @@ help () {
 ####################################
 
 other_args=()
-name_flag=""
+option_name=""
+option_date=""
 while [ $# -gt 0 ]; do
     case "$1" in
-        -n | --name ) name_flag="$2"; shift 2 ;;
+        -n | --name ) option_name="$2"; shift 2 ;;
+        -d | --date ) option_date="$2"; shift 2 ;;
         * ) other_args+=("$1"); shift ;;
     esac
 done
