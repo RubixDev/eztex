@@ -1,0 +1,62 @@
+\documentclass[ngerman, 12pt, listof=totoc]{scrreprt}
+
+\usepackage[a4paper, left=2.5cm, right=2cm, top=1.5cm, bottom=2cm, footskip=.8cm]{geometry}
+\usepackage{scrhack}
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage[autostyle]{csquotes}
+\usepackage{xcolor}
+\usepackage[pdfborder={0 0 0}]{hyperref}
+\usepackage[all]{hypcap}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{ragged2e}
+\justifying
+
+\usepackage{lipsum}
+
+% \usepackage[backend=biber,style=alphabetic,sorting=ynt]{biblatex}
+% \addbibresource{sample.bib}
+
+\usepackage[no-math]{fontspec}
+% \setmainfont{DejaVu Sans}
+\setmonofont{JetBrains Mono}
+
+\usepackage{tabularx}
+\usepackage{colortbl}
+\renewcommand{\arraystretch}{1.5}
+\newcolumntype{L}{X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+
+\renewcommand{\labelitemii}{$\circ$}
+\renewcommand{\labelitemiii}{$\vcenter{\hbox{\rule{.5ex}{.5ex}}}$}
+\renewcommand{\labelitemiv}{$\vcenter{\hbox{\rule{.5ex}{.5ex}}}$}
+
+% \setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+
+\input{preamble/listings.tex}
+\input{preamble/pgfplots.tex}
+\input{preamble/siunitx.tex}
+
+\titlehead{\centering\includegraphics[width=7cm]{pictures/title.png}}
+\title{Topic Placeholder}
+\subtitle{Optional Subtitle}
+\author{Name Placeholder}
+\publishers{My Company}
+\date{\today}
+
+\begin{document}
+    \maketitle
+    \include{content/abstract.tex}
+    \tableofcontents
+
+    \include{content/chapter1.tex}
+
+    \listoffigures
+    \listoftables
+    % \nocite{*}
+    % \printbibliography[heading=bibintoc,title={Literaturverzeichnis}]
+\end{document}
