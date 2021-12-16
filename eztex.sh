@@ -172,7 +172,7 @@ init () {
     if  [[ ! -d "$TEMPLATES_DIR" ]]; then
         echo -e "\x1b[31mThe templates directory at $(bold "$TEMPLATES_DIR") is missing. \
     Please make sure $(bold "$EXECUTABLE_NAME") is correctly installed on your system."
-        exit 1
+        return 4
     fi
     template="$1"
     [[ -n "$template" ]] || {
@@ -186,12 +186,14 @@ init () {
         return 2
     }
     [[ -z "$(ls -A)" ]] || {
-        echo -e "\x1b[31mCurrent directory is not empty.\x1b[0m"
+        echo -e "\x1b[31mDirectory is not empty.\x1b[0m"
         return 3
     }
 
-    echo -e "\x1b[36mCopying $(bold "$template") template to current directory...\x1b[0m"
+    echo -e "\x1b[36mCopying $(bold "$template") template to $2 directory...\x1b[0m"
     cp -r "$TEMPLATES_DIR/$template"/* ./
+    GLOBIGNORE=".:.."
+    cp -r "$TEMPLATES_DIR/$template"/.* ./
     echo_done
 }
 
@@ -206,16 +208,17 @@ new () {
         echo -e "\x1b[31mA file or directory with the name $(bold "$name") already exists.\x1b[0m"
         exit 5
     }
-    echo -e "\x1b[36mCopying $(bold "$template") template to $(bold "$name") directory...\x1b[0m"
-    mkdir "$name"
+    mkdir "$name" || exit 8
     pwd="$PWD"
     cd "$name" || exit 6
-    init "$template" > /dev/null || {
+    init "$template" "$(bold "$name")" || {
         code="$?"
         cd "$pwd" || exit 7
         rm -r "$name"
         exit "$code"
     }
+    echo -e "\x1b[36mReplacing topic placeholder with $(bold "$name")...\x1b[0m"
+    sed -i "s/Topic Placeholder/$name/" main.tex
     echo_done
 }
 
@@ -237,7 +240,7 @@ help () {
 ####################################
 
 case "$1" in
-    i | init  ) init "$2" || exit "$?" ;;
+    i | init  ) init "$2" current || exit "$?" ;;
     c | clear ) clear ;;
     n | new   ) new "$2" "$3" ;;
     s | save  ) save ;;
