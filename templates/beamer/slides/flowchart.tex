@@ -1,0 +1,23 @@
+\section{Flowchart}
+\begin{frame}
+    \frametitle{Flowchart}
+
+    \centering
+    \begin{tikzpicture}
+        \node[box](node1){Item 1};
+
+        \pause
+        \node[slanted, right of=node1, xshift=3cm](node2){Item 2};
+        \draw[arrow] (node2) -- +(0,1) -- node[fill=white]{No} +(-4,1) -- (node1);
+
+        \pause
+        \node[rounded, below of=node2, yshift=-1cm](node3){Item 3};
+        \draw[arrow] (node1) -- (node3);
+        \draw[arrow] (node3) -- +(-2,0) |- (node1);
+
+        \pause
+        \node[rhombus, left of=node3, xshift=-3cm](node4){Item 4};
+        \draw[arrow] (node1) -- (node4);
+        \draw[arrow] (node2) -- +(2,0) -- +(2,-3.5) -- node[fill=white]{Yes} +(-4,-3.5) -- (node4);
+    \end{tikzpicture}
+\end{frame}

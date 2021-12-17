@@ -1,0 +1,36 @@
+\documentclass[ngerman]{beamer}
+\usetheme{Berkeley}
+\usecolortheme{seahorse}
+\addtobeamertemplate{navigation symbols}{}{
+    \usebeamerfont{footline}
+    \usebeamercolor[fg]{footline}
+    \hspace{1em}
+    \insertframenumber/\inserttotalframenumber
+}
+
+\usepackage{babel}
+\usepackage[autostyle]{csquotes}
+\usepackage{url}
+
+\title{Topic Placeholder}
+\subtitle{Optional Subtitle}
+\author{Name Placeholder}
+\date{\today}
+\logo{\includegraphics[width=1.2cm]{pictures/rubix.png}}
+
+\input{preamble/tikz.tex}
+
+\begin{document}
+    \begin{frame}
+        \titlepage
+    \end{frame}
+    \begin{frame}
+        \frametitle{Inhaltsverzeichnis}
+        \tableofcontents
+    \end{frame}
+
+    \input{slides/example.tex}
+    \input{slides/flowchart.tex}
+
+    \input{slides/quellen.tex}
+\end{document}
