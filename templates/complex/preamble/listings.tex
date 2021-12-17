@@ -3,6 +3,7 @@
 \usepackage{tcolorbox}
 
 \renewcommand{\lstlistingname}{Programmblock}
+\renewcommand{\lstlistlistingname}{Programmblockverzeichnis}
 
 \tcbuselibrary{skins, breakable, listings}
 \tcbset{listing engine={listings}}
@@ -43,9 +44,9 @@
     morekeywords=[5]{assert!, assert_eq!, assert_ne!, cfg!, column!, compile_error!, concat!, concat_idents!, debug_assert!, debug_assert_eq!, debug_assert_ne!, env!, eprint!, eprintln!, file!, format!, format_args!, include!, include_bytes!, include_str!, line!, module_path!, option_env!, panic!, print!, println!, select!, stringify!, thread_local!, try!, unimplemented!, unreachable!, vec!, write!, writeln!},  % prelude macros
 }
 
-\newtcblisting{boxedlisting}[1][]{
+\newtcblisting{boxedlisting}[2][]{
     enhanced,
-    breakable,
+    % breakable,
     boxrule=0pt,
     frame hidden,
     colback=white,
@@ -55,11 +56,12 @@
     beforeafter skip balanced=14pt,
     listing only,
     listing remove caption=false,
-    listing options={#1},
+    listing options={#2},
+    #1
 }
-\newcommand{\boxedinputlisting}[2][]{\tcbinputlisting{
+\newcommand{\boxedinputlisting}[3][]{\tcbinputlisting{
     enhanced,
-    breakable,
+    % breakable,
     boxrule=0pt,
     frame hidden,
     colback=white,
@@ -69,8 +71,9 @@
     beforeafter skip balanced=14pt,
     listing only,
     listing remove caption=false,
-    listing options={nolol=false, #1},
-    listing file=#2,
+    listing options={nolol=false, #2},
+    listing file=#3,
+    #1
 }}
 \newcommand{\code}[2][]{\lstinline[basicstyle=\ttfamily, #1]|#2|}
 \newcommand{\rustcode}[1]{\code[style=Rust]{#1}}

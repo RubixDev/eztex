@@ -11,6 +11,7 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{wrapfig}
+\usepackage{float}
 % \usepackage{ragged2e}
 % \justifying
 \renewcommand{\baselinestretch}{1.5}
@@ -21,12 +22,14 @@
 % \addbibresource{sample.bib}
 
 \usepackage[no-math]{fontspec}
-\setmainfont{Times New Roman}
+% \setmainfont{Times New Roman}
+% \setsansfont{Arial}
 \setmonofont{JetBrains Mono}
 
 \usepackage{tabularx}
+\usepackage{multirow}
 \usepackage{colortbl}
-\renewcommand{\arraystretch}{1.5}
+\renewcommand{\arraystretch}{1.2}
 \newcolumntype{L}{X}
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft\arraybackslash}X}
@@ -58,6 +61,7 @@
 
     \listoffigures
     \listoftables
+    \lstlistoflistings
     % \nocite{*}
     % \printbibliography[heading=bibintoc,title={Literaturverzeichnis}]
 \end{document}
