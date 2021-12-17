@@ -237,6 +237,14 @@ save () {
     cp main.pdf "$(basename "$(pwd)")".pdf
 }
 
+update () {
+    sudo bash -c "$(curl -fL 'https://raw.githubusercontent.com/RubixDev/eztex/main/install.sh')"
+}
+
+remove () {
+    sudo bash -c "$(curl -fL 'https://raw.githubusercontent.com/RubixDev/eztex/main/uninstall.sh')"
+}
+
 help () {
     echo "$EXECUTABLE_NAME"
     echo "RubixDev"
@@ -250,11 +258,13 @@ help () {
     printf "    %-15s%-20s%s\n" "-d | --date" "DATE" "A date to use instead of \\today"
     echo
     echo "COMMANDS:"
-    printf "    %-15s%-20s%s\n" "i | init"  "TEMPLATE"       "Initializes a new LaTeX project based on TEMPLATE in the current directory"
-    printf "    %-15s%-20s%s\n" "c | clear" ""               "Clears the current LaTeX project of cache files"
-    printf "    %-15s%-20s%s\n" "n | new"   "TEMPLATE  NAME" "Creates a new LaTeX project in a new directory called NAME based on TEMPLATE"
-    printf "    %-15s%-20s%s\n" "s | save"  ""               "Copies the main.pdf to a PDF with the name of the current directory"
-    printf "    %-15s%-20s%s\n" "h | help"  ""               "Shows this message"
+    printf "    %-15s%-20s%s\n" "i | init"   "TEMPLATE"       "Initializes a new LaTeX project based on TEMPLATE in the current directory"
+    printf "    %-15s%-20s%s\n" "c | clear"  ""               "Clears the current LaTeX project of cache files"
+    printf "    %-15s%-20s%s\n" "n | new"    "TEMPLATE  NAME" "Creates a new LaTeX project in a new directory called NAME based on TEMPLATE"
+    printf "    %-15s%-20s%s\n" "s | save"   ""               "Copies the main.pdf to a PDF with the name of the current directory"
+    printf "    %-15s%-20s%s\n" "u | update" ""               "Try to update eztex to the newest version from GitHub"
+    printf "    %-15s%-20s%s\n" "r | remove" ""               "Try to remove eztex from the system"
+    printf "    %-15s%-20s%s\n" "h | help"   ""               "Shows this message"
 }
 
 ####################################
@@ -271,10 +281,12 @@ while [ $# -gt 0 ]; do
 done
 
 case "${other_args[0]}" in
-    i | init  ) init "${other_args[1]}" current || exit "$?" ;;
-    c | clear ) clear ;;
-    n | new   ) new "${other_args[1]}" "${other_args[2]}" ;;
-    s | save  ) save ;;
-    h | help  ) help ;;
+    i | init   ) init "${other_args[1]}" current || exit "$?" ;;
+    c | clear  ) clear ;;
+    n | new    ) new "${other_args[1]}" "${other_args[2]}" ;;
+    s | save   ) save ;;
+    u | update ) update ;;
+    r | remove ) remove ;;
+    h | help   ) help ;;
     * ) echo -e "\x1b[31mUnknown command '$(bold "${other_args[0]}")'\x1b[0m"; help ;;
 esac
