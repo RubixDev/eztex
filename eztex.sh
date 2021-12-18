@@ -198,7 +198,7 @@ init () {
 
     if [[ -n "$option_name" ]]; then
         echo -e "\x1b[36mReplacing name placeholder with $(bold "$option_name")...\x1b[0m"
-        sed -i "s/Name Placeholder/$option_name/" main.tex
+        sed -i -E "s/Name Placeholder|Name Platzhalter/$option_name/" main.tex
         echo_done
     fi
     if [[ -n "$option_date" ]]; then
@@ -229,7 +229,7 @@ new () {
         exit "$code"
     }
     echo -e "\x1b[36mReplacing topic placeholder with $(bold "$name")...\x1b[0m"
-    sed -i "s/Topic Placeholder/$name/" main.tex
+    sed -i -E "s/Topic Placeholder|Thema Platzhalter/$name/" main.tex
     echo_done
 }
 
