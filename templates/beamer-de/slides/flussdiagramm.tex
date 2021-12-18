@@ -1,6 +1,6 @@
-\section{Flowchart}
+\section{Flussdiagramm}
 \begin{frame}
-    \frametitle{Flowchart}
+    \frametitle{Flussdiagramm}
 
     \centering
     \begin{tikzpicture}
@@ -8,7 +8,7 @@
 
         \pause
         \node[slanted, right of=node1, xshift=3cm](node2){Item 2};
-        \draw[arrow] (node2) -- +(0,1) -- node[fill=white]{No} +(-4,1) -- (node1);
+        \draw[arrow] (node2) -- +(0,1) -- node[fill=white]{Nein} +(-4,1) -- (node1);
 
         \pause
         \node[rounded, below of=node2, yshift=-1cm](node3){Item 3};
@@ -18,6 +18,6 @@
         \pause
         \node[rhombus, left of=node3, xshift=-3cm](node4){Item 4};
         \draw[arrow] (node1) -- (node4);
-        \draw[arrow] (node2) -- +(2,0) -- +(2,-3.5) -- node[fill=white]{Yes} +(-4,-3.5) -- (node4);
+        \draw[arrow] (node2) -- +(2,0) -- +(2,-3.5) -- node[fill=white]{Ja} +(-4,-3.5) -- (node4);
     \end{tikzpicture}
 \end{frame}
