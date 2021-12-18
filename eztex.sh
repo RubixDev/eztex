@@ -1,6 +1,7 @@
 #!/bin/bash
 
 EXECUTABLE_NAME="eztex"
+EZTEX_VERSION="0.1.0"
 # TEMPLATES_DIR="$HOME/.local/share/$EXECUTABLE_NAME/templates"
 TEMPLATES_DIR="/opt/$EXECUTABLE_NAME/templates"
 
@@ -246,7 +247,7 @@ remove () {
 }
 
 help () {
-    echo "$EXECUTABLE_NAME"
+    echo "$EXECUTABLE_NAME v$EZTEX_VERSION"
     echo "RubixDev"
     echo "A CLI tool for quickly starting new LaTeX projects"
     echo
