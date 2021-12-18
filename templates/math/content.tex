@@ -1,0 +1,40 @@
+\plot[
+    xmin=-5, xmax= 5,
+    ymin=-4, ymax=10,
+    height=7cm,
+    width=.69\textwidth,
+    samples=100,
+    xtick distance=2,
+    ytick distance=2,
+]{
+    \addgraph{x^2}
+    \addlegendentry{$f(x)=x^2$}
+
+    \addgraph[color=blue]{log2(x)}
+    \addlegendentry{$l(x)=\log_2(x)$}
+
+    \addsamples[color=violet, mark=, fill=violet!50, fill opacity=.5]{
+        (-12,0)
+        (-10,0)
+        (-8,4)
+        (-4,4)
+        (-2,0)
+        (2,0)
+        (4,-2)
+        (6,-2)
+        (8,0)
+        (12,0)
+    }
+    \addlegendentry{Aufzug}
+
+    \addpoint{4,2}{80}{$(4|2)$}
+    \addpoint{0,0}{230}{Ursprung}
+}
+
+\begin{align*}
+      |\vec{s}(t)|&=r                &        f&=\frac{1}{T}               \\
+      |\vec{v}(t)|&=\omega r         &   \omega&=2\pi f                    \\
+      |\vec{a}(t)|&=\omega^2r        &        v&=\frac{2\pi r}{T}=\omega r \\
+    |\vec{F_Z}(t)|&=m\omega^2r       &   \omega&=\frac{v}{r}               \\
+            \omega&=\frac{2\pi}{T}   &     a(t)&=\omega t                  \\
+\end{align*}

@@ -1,0 +1,40 @@
+\documentclass[english, 12pt]{article}
+
+\usepackage[a4paper, margin=2cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage[autostyle]{csquotes}
+\usepackage{xcolor}
+\usepackage[pdfborder={0 0 0}]{hyperref}
+\usepackage[all]{hypcap}
+
+\usepackage[no-math]{fontspec}
+\setmainfont{DejaVu Sans}
+\setmonofont{JetBrains Mono}
+
+\usepackage{tabularx}
+\renewcommand{\arraystretch}{1.5}
+\newcolumntype{L}{X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{\small Name Placeholder}
+\chead{\small Topic Placeholder}
+\rhead{\small \today}
+\setlength{\headheight}{14pt}
+\addtolength{\topmargin}{-2pt}
+
+\renewcommand{\labelitemii}{$\circ$}
+\renewcommand{\labelitemiii}{$\vcenter{\hbox{\rule{.5ex}{.5ex}}}$}
+\renewcommand{\labelitemiv}{$\vcenter{\hbox{\rule{.5ex}{.5ex}}}$}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{8pt}
+
+\input{preamble/listings.tex}
+
+\begin{document}
+    \input{content.tex}
+\end{document}
