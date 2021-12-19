@@ -15,7 +15,7 @@ set -l IFS; sudo bash -c (curl -fsSL 'https://raw.githubusercontent.com/RubixDev
 ```
 > **Note:** `curl -fsSL` can be replaced with `wget -O-` if necessary
 
-## Deletion
+## Removal
 ```bash
 sudo bash -c "$(curl -fsSL 'https://raw.githubusercontent.com/RubixDev/eztex/main/uninstall.sh')"
 ```
