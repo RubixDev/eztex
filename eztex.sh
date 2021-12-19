@@ -238,10 +238,18 @@ save () {
 }
 
 update () {
+    [[ -f /usr/share/eztex/eztex.sh ]] || {
+        echo -e "\x1b[31m$(bold "$EXECUTABLE_NAME") seems to be installed from the AUR, self-updates are not supported\x1b[0m"
+        exit 1
+    }
     sudo bash -c "$(curl -fL 'https://raw.githubusercontent.com/RubixDev/eztex/main/install.sh')"
 }
 
 remove () {
+    [[ -f /usr/share/eztex/eztex.sh ]] || {
+        echo -e "\x1b[31m$(bold "$EXECUTABLE_NAME") seems to be installed from the AUR, self-removal is not supported\x1b[0m"
+        exit 1
+    }
     sudo bash -c "$(curl -fL 'https://raw.githubusercontent.com/RubixDev/eztex/main/uninstall.sh')"
 }
 
