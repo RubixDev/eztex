@@ -1,7 +1,7 @@
 #!/bin/bash
 
 EXECUTABLE_NAME="eztex"
-EZTEX_VERSION="0.1.3"
+EZTEX_VERSION="0.1.4"
 TEMPLATES_DIR="/usr/share/$EXECUTABLE_NAME/templates"
 
 bold () { echo -e "\x1b[1m$1\x1b[22m"; }
